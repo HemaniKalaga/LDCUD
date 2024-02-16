@@ -1,0 +1,32 @@
+{% extends 'app/dummy.html' %}
+{% block title %}
+    <title>School Detail</title>
+{% endblock %}
+{% block body_block %}
+    <center>
+        <h1>School Details</h1>
+        <table border="2px">
+            <tr>
+                <th>School Name</th>
+                <th>School Principal</th>
+                <th>School Location</th>
+                <th>Student Name</th>
+                <th>Student Age</th>
+            </tr>
+            {% for scl in sclobj.students.all %}
+            <tr>
+                <td>{{sclobj.sname}}</td>
+                <td>{{sclobj.sprincipal}}</td>
+                <td>{{sclobj.slocation}}</td>
+                <td>{{scl.stname}}</td>
+                <td>{{scl.stage}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br> 0
+        <a href="{% url 'SchoolUpdate' pk=sclobj.pk %}" class="btn btn-warning">Update</a>
+        <br>
+        <br>
+        <a href="{% url 'SchoolDelete' pk=sclobj.pk %}" class="btn btn-danger">Delete</a>
+    </center>
+{% endblock %}
